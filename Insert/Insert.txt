@@ -1,0 +1,46 @@
+INSERT INTO polaznik (id_polaznik, ime, prezime, godiste, broj_telefona) VALUES('Pol1','Kemal','Gogić',2000,'061234567');
+INSERT INTO polaznik (id_polaznik, ime, prezime, godiste, broj_telefona) VALUES('Pol2','Zijo','Jusufović',1998,'062333444');
+INSERT INTO polaznik (id_polaznik, ime, prezime, godiste, broj_telefona) VALUES('Pol3','Kenan','Hamidović',1995,'061222999');
+INSERT INTO polaznik (id_polaznik, ime, prezime, godiste, broj_telefona) VALUES('Pol4','Haris','Hamidović',1993,'062987654');
+INSERT INTO polaznik (id_polaznik, ime, prezime, godiste, broj_telefona) VALUES('Pol5','Muamer','Hodžić',1999,'062343565');
+
+INSERT INTO vozilo (id_vozilo, model, godiste, registracija, kategorija) VALUES('Voz1','Golf 4',2014,'K21-M-453', 'B');
+INSERT INTO vozilo (id_vozilo, model, godiste, registracija, kategorija) VALUES('Voz2','Volvo D7F290',2010,'M43-M-123', 'C');
+INSERT INTO vozilo (id_vozilo, model, godiste, registracija, kategorija) VALUES('Voz3','Suzuki v-storm650',2010,'T11-T-222', 'A');
+
+INSERT INTO instruktor (id_instruktor, ime, prezime, godiste, broj_telefona, id_vozilo) VALUES('Ins1','Mustafa','Mustafić',1973,'061444555','Voz1');
+INSERT INTO instruktor (id_instruktor, ime, prezime, godiste, broj_telefona, id_vozilo) VALUES('Ins2','Suljo','Zukić',1980,'061555666','Voz2');
+INSERT INTO instruktor (id_instruktor, ime, prezime, godiste, broj_telefona, id_vozilo) VALUES('Ins3','Haso','Husić',1977,'0626767878','Voz3');
+
+INSERT INTO cas (id_cas, id_polaznik, broj_casova_prva_pomoc, broj_casova_testovi, id_instruktor, id_vozilo, broj_casova_voznja) 
+VALUES('Cas1','Pol1',8,40,'Ins1','Voz1',38);
+INSERT INTO cas (id_cas, id_polaznik, broj_casova_prva_pomoc, broj_casova_testovi, id_instruktor, id_vozilo, broj_casova_voznja) 
+VALUES('Cas2','Pol2',8,40,'Ins2','Voz2',40);
+INSERT INTO cas (id_cas, id_polaznik, broj_casova_prva_pomoc, broj_casova_testovi, id_instruktor, id_vozilo, broj_casova_voznja) 
+VALUES('Cas3','Pol3',8,32,'Ins1','Voz1',0);
+INSERT INTO cas (id_cas, id_polaznik, broj_casova_prva_pomoc, broj_casova_testovi, id_instruktor, id_vozilo, broj_casova_voznja) 
+VALUES('Cas4','Pol4',4,3,'Ins1','Voz1',0);
+INSERT INTO cas (id_cas, id_polaznik, broj_casova_prva_pomoc, broj_casova_testovi, id_instruktor, id_vozilo, broj_casova_voznja) 
+VALUES('Cas5','Pol5',1,0,'Ins3','Voz3',0);
+
+INSERT INTO testiranje (id_testiranje, id_polaznik, polozena_prva_pomoc, polozeni_testovi, polozena_voznja) 
+VALUES('Tes1','Pol1','Da','Da','Ne');
+INSERT INTO testiranje (id_testiranje, id_polaznik, polozena_prva_pomoc, polozeni_testovi, polozena_voznja) 
+VALUES('Tes2','Pol2','Da','Da','Da');
+INSERT INTO testiranje (id_testiranje, id_polaznik, polozena_prva_pomoc, polozeni_testovi, polozena_voznja) 
+VALUES('Tes3','Pol3','Da','Ne','Ne');
+INSERT INTO testiranje (id_testiranje, id_polaznik, polozena_prva_pomoc, polozeni_testovi, polozena_voznja) 
+VALUES('Tes4','Pol4','Ne','Ne','Ne');
+INSERT INTO testiranje (id_testiranje, id_polaznik, polozena_prva_pomoc, polozeni_testovi, polozena_voznja) 
+VALUES('Tes5','Pol5','Ne','Ne','Ne');
+
+INSERT INTO kurs (id_kurs,  id_polaznik,  kategorija,  id_cas, odslusani_casovi,  id_testiranje, polozen_vozacki_ispit) 
+VALUES('Kur1','Pol1','B','Cas1','Ne','Tes1','Ne');
+INSERT INTO kurs (id_kurs,  id_polaznik,  kategorija,  id_cas, odslusani_casovi,  id_testiranje, polozen_vozacki_ispit)
+VALUES('Kur2','Pol2','C','Cas2','Da','Tes2','Da');
+INSERT INTO kurs (id_kurs,  id_polaznik,  kategorija,  id_cas, odslusani_casovi,  id_testiranje, polozen_vozacki_ispit) 
+VALUES('Kur3','Pol3','B' ,'Cas3','Ne','Tes3','Ne');
+INSERT INTO kurs (id_kurs,  id_polaznik,  kategorija,  id_cas, odslusani_casovi,  id_testiranje, polozen_vozacki_ispit) 
+VALUES('Kur4','Pol4','B','Cas4','Ne','Tes4','Ne');
+INSERT INTO kurs (id_kurs,  id_polaznik,  kategorija,  id_cas, odslusani_casovi,  id_testiranje, polozen_vozacki_ispit)
+VALUES('Kur5','Pol5','A','Cas5','Ne','Tes5','Ne');

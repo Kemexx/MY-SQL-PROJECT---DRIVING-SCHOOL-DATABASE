@@ -1,0 +1,61 @@
+CREATE TABLE polaznik
+(id_polaznik VARCHAR(20) NOT NULL,
+ ime VARCHAR(20),
+ prezime VARCHAR(20),
+ godiste NUMERIC(5,0),
+ broj_telefona VARCHAR(15),
+ PRIMARY KEY (id_polaznik));
+
+CREATE TABLE vozilo
+	(id_vozilo VARCHAR(20) NOT NULL,
+	 model VARCHAR(20),
+	 godiste NUMERIC(5,0),
+	 registracija VARCHAR(30),
+	 kategorija VARCHAR(5),
+	 PRIMARY KEY (id_vozilo));
+
+
+CREATE TABLE instruktor
+	(id_instruktor VARCHAR(20) NOT NULL,
+	 ime VARCHAR(20),
+	 prezime VARCHAR(20),
+	 godiste NUMERIC(5,0),
+	 broj_telefona VARCHAR(15),
+	 id_vozilo VARCHAR(20) NOT NULL,
+	 PRIMARY KEY (id_instruktor),
+	 FOREIGN KEY (id_vozilo) REFERENCES vozilo);
+
+CREATE TABLE cas
+	(id_cas VARCHAR(20) NOT NULL,
+	 id_polaznik VARCHAR(20) NOT NULL,
+	 broj_casova_prva_pomoc VARCHAR(20),
+	 broj_casova_testovi VARCHAR(20),
+ 	 id_instruktor VARCHAR(20) NOT NULL,
+	 id_vozilo VARCHAR(20) NOT NULL,
+	 broj_casova_voznja VARCHAR(20) NOT NULL,
+	 PRIMARY KEY (id_cas),
+	 FOREIGN KEY (id_polaznik) REFERENCES polaznik,
+	 FOREIGN KEY (id_instruktor) REFERENCES instruktor,
+	 FOREIGN KEY (id_vozilo) REFERENCES vozilo);
+
+CREATE TABLE testiranje
+	(id_testiranje VARCHAR(20) NOT NULL,
+	 id_polaznik VARCHAR(20) NOT NULL,
+	 polozena_prva_pomoc VARCHAR(20) NOT NULL,
+	 polozeni_testovi VARCHAR(20) NOT NULL,
+	 polozena_voznja VARCHAR(20) NOT NULL,
+	 PRIMARY KEY (id_testiranje),
+	 FOREIGN KEY (id_polaznik) REFERENCES polaznik);
+
+CREATE TABLE kurs
+	(id_kurs VARCHAR(20) NOT NULL,
+	 id_polaznik VARCHAR(20) NOT NULL,
+	 kategorija VARCHAR(10),
+	 id_cas VARCHAR(20) NOT NULL,
+	 odslusani_casovi INT,
+	 id_testiranje VARCHAR(20) NOT NULL,
+	 polozen_vozacki_ispit VARCHAR(20),
+	 PRIMARY KEY (id_kurs),
+	 FOREIGN KEY (id_polaznik) REFERENCES polaznik,
+	 FOREIGN KEY (id_cas) REFERENCES cas,
+	 FOREIGN KEY (id_testiranje) REFERENCES testiranje);
